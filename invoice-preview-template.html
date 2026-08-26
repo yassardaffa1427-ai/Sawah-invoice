@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Preview - Sawah Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #f5f5f5;
+            padding: 2rem 1rem;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .demo-header {
+            background: #0d0d0d;
+            color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .demo-header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 28px;
+            margin-bottom: 0.5rem;
+            color: #d4a843;
+        }
+
+        .demo-header p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .invoice-document {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .print-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            padding: 2rem;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .print-company h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+            font-family: 'Syne', sans-serif;
+        }
+
+        .print-company p {
+            font-size: 12px;
+            color: #666;
+            margin: 0.25rem 0;
+        }
+
+        .print-invoice-title {
+            text-align: right;
+        }
+
+        .print-invoice-title h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #d4a843;
+            font-family: 'Syne', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .print-invoice-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            font-size: 12px;
+        }
+
+        .print-invoice-details div {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .print-invoice-details strong {
+            color: #000;
+            width: 80px;
+        }
+
+        .print-invoice-details span {
+            color: #333;
+        }
+
+        .print-main {
+            padding: 2rem;
+        }
+
+        .print-section-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.5rem;
+        }
+
+        .print-buyer {
+            margin-bottom: 1.5rem;
+        }
+
+        .print-buyer-info {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .print-buyer-info div {
+            flex: 1;
+        }
+
+        .print-buyer-info strong {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .print-buyer-info span {
+            display: block;
+            font-size: 14px;
+            color: #000;
+        }
+
+        .print-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 12px;
+        }
+
+        .print-table th {
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+            color: #fff;
+            background: #333;
+            border: none;
+        }
+
+        .print-table th.r {
+            text-align: right;
+        }
+
+        .print-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            color: #333;
+        }
+
+        .print-table td.r {
+            text-align: right;
+        }
+
+        .print-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .print-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .print-summary {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .print-summary-box {
+            width: 350px;
+        }
+
+        .print-summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 13px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .print-summary-row.total {
+            border-top: 2px solid #333;
+            padding-top: 10px;
+            margin-top: 10px;
+            font-weight: 700;
+            font-size: 16px;
+            border-bottom: none;
+        }
+
+        .print-summary-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .print-summary-value {
+            text-align: right;
+            color: #000;
+            font-weight: 500;
+        }
+
+        .print-summary-row.total .print-summary-label {
+            color: #000;
+        }
+
+        .print-summary-row.total .print-summary-value {
+            color: #d4a843;
+            font-size: 18px;
+        }
+
+        .print-footer {
+            padding: 2rem;
+            border-top: 2px solid #ddd;
+            background: #f9f9f9;
+            color: #666;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .print-notes strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #000;
+            font-weight: 600;
+        }
+
+        .print-notes p {
+            color: #333;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #ddd;
+            color: #999;
+            font-size: 11px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: #0d0d0d;
+            color: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #282828;
+        }
+
+        .feature-card h3 {
+            color: #d4a843;
+            font-family: 'Syne', sans-serif;
+            margin-bottom: 0.75rem;
+            font-size: 16px;
+        }
+
+        .feature-card p {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            margin-top: 0.75rem;
+            font-size: 12px;
+        }
+
+        .feature-card li {
+            padding: 0.4rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+            color: #888;
+        }
+
+        .feature-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #d4a843;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #d4a843;
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.88;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+        }
+
+        .btn-secondary:hover {
+            background: #444;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .demo-header,
+            .feature-grid,
+            .action-buttons {
+                display: none;
+            }
+
+            .invoice-document {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .print-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .print-invoice-title {
+                text-align: left;
+            }
+
+            .print-invoice-details {
+                grid-template-columns: 1fr;
+            }
+
+            .print-buyer-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .print-summary {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="demo-header">
+            <h1>📄 Invoice Preview</h1>
+            <p>Tampilan profesional invoice yang siap cetak atau disimpan sebagai PDF</p>
+        </div>
+
+        <div class="invoice-document">
+            <div class="print-header">
+                <div class="print-company">
+                    <h1>SAWAH STUDIO</h1>
+                    <p>Fresh made by people of sawah</p>
+                    <p style="margin-top: 0.5rem;">y26site.framer.ai | +62 85810803909</p>
+                </div>
+                <div class="print-invoice-title">
+                    <h2>INVOICE</h2>
+                    <div class="print-invoice-details">
+                        <div><strong>No.:</strong> <span>#INV/789/2024</span></div>
+                        <div><strong>Tanggal:</strong> <span>26 Agustus 2024</span></div>
+                        <div><strong>Metode:</strong> <span>Transfer Bank</span></div>
+                        <div><strong></strong> <span></span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="print-main">
+                <div class="print-section-title">Data Pembeli</div>
+                <div class="print-buyer">
+                    <div class="print-buyer-info">
+                        <div>
+                            <strong>Nama</strong>
+                            <span>PT Maju Jaya Indonesia</span>
+                        </div>
+                        <div>
+                            <strong>Kontak / Rekening</strong>
+                            <span>0812-3456-7890</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="print-section-title">Item / Layanan</div>
+                <table class="print-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 40px;">No</th>
+                            <th>Deskripsi</th>
+                            <th style="width: 60px; text-align: center;">Qty</th>
+                            <th style="width: 110px; text-align: right;">Harga</th>
+                            <th style="width: 130px; text-align: right;">Jumlah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center;">1</td>
+                            <td>Jasa Desain UI/UX - Landing Page</td>
+                            <td style="text-align: center;">1</td>
+                            <td style="text-align: right;">Rp. 3.000.000</td>
+                            <td style="text-align: right; font-weight: 600;">Rp. 3.000.000</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">2</td>
+                            <td>Jasa Development Frontend - React</td>
+                            <td style="text-align: center;">40</td>
+                            <td style="text-align: right;">Rp. 200.000</td>
+                            <td style="text-align: right; font-weight: 600;">Rp. 8.000.000</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">3</td>
+                            <td>Testing dan Quality Assurance</td>
+                            <td style="text-align: center;">1</td>
+                            <td style="text-align: right;">Rp. 1.500.000</td>
+                            <td style="text-align: right; font-weight: 600;">Rp. 1.500.000</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">4</td>
+                            <td>Setup dan Deployment ke Production</td>
+                            <td style="text-align: center;">1</td>
+                            <td style="text-align: right;">Rp. 1.000.000</td>
+                            <td style="text-align: right; font-weight: 600;">Rp. 1.000.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="print-summary">
+                    <div class="print-summary-box">
+                        <div class="print-summary-row">
+                            <span class="print-summary-label">Sub total</span>
+                            <span class="print-summary-value">Rp. 13.500.000</span>
+                        </div>
+                        <div class="print-summary-row">
+                            <span class="print-summary-label">Diskon (10%)</span>
+                            <span class="print-summary-value" style="color: #4ade80;">- Rp. 1.350.000</span>
+                        </div>
+                        <div class="print-summary-row">
+                            <span class="print-summary-label">Pajak (10%)</span>
+                            <span class="print-summary-value" style="color: #fb923c;">+ Rp. 1.215.000</span>
+                        </div>
+                        <div class="print-summary-row total">
+                            <span class="print-summary-label">Total</span>
+                            <span class="print-summary-value">Rp. 13.365.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="print-footer">
+                    <div class="print-notes">
+                        <strong>Catatan:</strong>
+                        <p>Pembayaran harus diterima dalam waktu 14 hari sejak tanggal invoice.<br>
+                        Transfer ke rekening BNI: 1234567890 a.n. Sawah Studio<br>
+                        Terima kasih atas kerja samanya!</p>
+                    </div>
+                </div>
+
+                <div class="footer-note">
+                    <p>Terima kasih telah mempercayai kami!</p>
+                    <p>Invoice ini diproduksi oleh Sawah Studio Invoice App</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>👀 Tampilan Profesional</h3>
+                <p>Invoice dengan desain modern dan clean yang siap untuk dipresentasikan ke klien.</p>
+                <ul>
+                    <li>Header company yang elegan</li>
+                    <li>Tabel item yang terstruktur</li>
+                    <li>Summary biaya yang jelas</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3>🖨️ Print-Ready</h3>
+                <p>Dioptimalkan untuk pencetakan dengan styling khusus dan layout yang responsif.</p>
+                <ul>
+                    <li>Font dan ukuran optimal</li>
+                    <li>Warna yang cetak sempurna</li>
+                    <li>Margin dan spacing tepat</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3>📥 Simpan sebagai PDF</h3>
+                <p>Gunakan fitur Print untuk menyimpan invoice langsung sebagai file PDF.</p>
+                <ul>
+                    <li>Ctrl+P atau Cmd+P</li>
+                    <li>Pilih "Save as PDF"</li>
+                    <li>File siap dikirim atau disimpan</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3>📱 Mobile Friendly</h3>
+                <p>Preview dapat dibuka di semua perangkat dengan tampilan yang tetap profesional.</p>
+                <ul>
+                    <li>Responsive layout</li>
+                    <li>Readable di small screen</li>
+                    <li>Print dari mobile juga bisa</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3>💾 Data Lengkap</h3>
+                <p>Semua informasi invoice otomatis terintegrasi dari form aplikasi.</p>
+                <ul>
+                    <li>No. invoice & tanggal</li>
+                    <li>Data pembeli lengkap</li>
+                    <li>Detail item dan perhitungan</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3>🎨 Customizable</h3>
+                <p>Preview dapat disesuaikan sesuai kebutuhan brand Anda.</p>
+                <ul>
+                    <li>Edit warna dan font</li>
+                    <li>Tambah logo custom</li>
+                    <li>Ubah layout sesuai preferensi</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="window.print()">
+                🖨️ Cetak / Save PDF
+            </button>
+            <button class="btn btn-secondary" onclick="window.location.href='invoice_sawah.html'">
+                ← Kembali ke Aplikasi
+            </button>
+        </div>
+    </div>
+</body>
+</html>
