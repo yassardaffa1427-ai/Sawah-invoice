@@ -318,12 +318,15 @@ section{padding:4.5rem 0}
 .price-feats li.no{color:var(--text-3)}
 .price-card.pro .price-feats li.no{color:var(--on-ink);opacity:.5}
 .price-feats li.no svg{opacity:.55}
-.price-note{
-  margin-top:1.4rem;padding-top:1rem;border-top:1px solid var(--border-strong);
-  font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--text-3);
+.price-cta{
+  display:flex;align-items:center;justify-content:center;width:100%;margin-top:1.4rem;
+  padding:12px 20px;border-radius:var(--radius-sm);border:1.5px solid transparent;
+  font-family:'Inter Tight',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer;
+  transition:transform .18s,box-shadow .18s,background .18s,border-color .18s;
 }
-.price-card.pro .price-note{border-top-color:rgba(247,245,241,.18);color:var(--on-ink);opacity:.6}
+.price-card:not(.pro) .price-cta{background:var(--primary);color:var(--on-primary);box-shadow:var(--shadow-sm)}
+.price-card:not(.pro) .price-cta:hover{background:var(--primary-hover);transform:translateY(-2px);box-shadow:var(--shadow)}
+.price-cta.disabled{background:transparent;border-color:var(--on-ink);color:var(--on-ink);opacity:.5;cursor:not-allowed;pointer-events:none}
 
 /* ─────────── FAQ ─────────── */
 .faq-list{display:flex;flex-direction:column;gap:.65rem;max-width:800px}
@@ -556,7 +559,7 @@ html.motion-ready [data-anim-group]>*{opacity:0}
           <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Watermark "made by Sawah Studio" tetap tampil</li>
           <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Belum bisa unggah logo sendiri</li>
         </ul>
-        <div class="price-note">Aktif sekarang</div>
+        <a href="/invoice-edit" class="price-cta">Coba Sekarang</a>
       </div>
 
       <div class="price-card pro">
@@ -568,7 +571,7 @@ html.motion-ready [data-anim-group]>*{opacity:0}
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tanpa watermark "made by Sawah Studio"</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Bisa menambahkan logo/icon sendiri di invoice</li>
         </ul>
-        <div class="price-note">Segera hadir</div>
+        <span class="price-cta disabled" aria-disabled="true">Segera Hadir</span>
       </div>
     </div>
   </div>
