@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#4C6F0F">
+<meta name="theme-color" content="#F7F5F1">
 <link rel="icon" type="image/png" href="/assets/logo%20sawah.png">
 <title>Contoh Invoice — Sawah Studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,32 +14,25 @@
 </script>
 <style>
 /* ════════════════════════════════════════════════════════════
-   SAWAH DESIGN SYSTEM — primary #4C6F0F (olive) + skala tonal
+   SAWAH DESIGN SYSTEM v2 — krem ↔ tinta monokrom, aksen #4C6F0F (olive)
    ════════════════════════════════════════════════════════════ */
 :root{
-  --p-50:#F6FBEF;  --p-100:#E9F4D7; --p-200:#D4E8B0; --p-300:#B4D57B;
-  --p-400:#92C639; --p-500:#72A022; --p-600:#4C6F0F; --p-700:#3E5B0B;
-  --p-800:#2E4309; --p-900:#213008; --p-950:#121905;
-
-  --n-0:#FFFFFF;   --n-50:#FAFBF7;  --n-100:#F2F4EC; --n-200:#E4E8D9;
-  --n-300:#CBD1BC; --n-400:#9BA48A; --n-500:#6F7862; --n-600:#545C48;
-  --n-700:#3E4534; --n-800:#272C1F; --n-900:#191D13; --n-950:#10130B;
-
-  /* MODE TERANG */
-  --bg:var(--n-50); --bg-tint:var(--p-50);
-  --surface:var(--n-0); --surface-2:var(--n-100); --surface-3:var(--n-200);
-  --border:var(--n-200); --border-strong:var(--n-300);
-  --text:var(--n-900); --text-2:var(--n-600); --text-3:var(--n-500);
-  --primary:var(--p-600); --primary-hover:var(--p-700);
-  --primary-soft:var(--p-100); --primary-faint:var(--p-50);
-  --on-primary:#FFFFFF; --accent:var(--p-700);
+  /* MODE TERANG (krem hangat) */
+  --bg:#F7F5F1; --bg-tint:#EFEBE4;
+  --surface:#FFFFFF; --surface-2:#EFEBE4; --surface-3:#DEDBD3;
+  --border:#DEDBD3; --border-strong:#C7C2B7;
+  --text:#1E1C1A; --text-2:#5E5A53; --text-3:#827D76;
+  --ink-fill:#38342F; --on-ink:#FFFFFF;
+  --primary:var(--ink-fill); --primary-hover:#4A453D;
+  --primary-soft:var(--surface-2); --primary-faint:var(--surface);
+  --on-primary:var(--on-ink); --accent:#4C6F0F;
   --ring:rgba(76,111,15,.20);
-  --shadow-sm:0 1px 2px rgba(24,32,10,.07);
-  --shadow:0 4px 18px rgba(24,32,10,.08);
-  --shadow-lg:0 20px 50px rgba(24,32,10,.16);
+  --shadow-sm:0 1px 2px rgba(30,26,22,.07);
+  --shadow:0 4px 18px rgba(30,26,22,.08);
+  --shadow-lg:0 20px 50px rgba(30,26,22,.16);
   color-scheme:light;
 
-  --radius:14px; --radius-sm:9px; --radius-lg:20px; --radius-pill:999px;
+  --radius:10px; --radius-sm:6px; --radius-lg:16px; --radius-pill:999px;
 
   /* Warna dokumen kertas — konstan di kedua tema */
   --paper:#FFFFFF; --paper-2:#F7F8F3; --paper-line:#E1E5D8;
@@ -48,13 +41,14 @@
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:var(--n-950); --bg-tint:var(--p-950);
-    --surface:var(--n-900); --surface-2:var(--n-800); --surface-3:#303626;
-    --border:#2C3324; --border-strong:var(--n-700);
-    --text:var(--n-100); --text-2:var(--n-400); --text-3:var(--n-500);
-    --primary:var(--p-400); --primary-hover:var(--p-300);
-    --primary-soft:rgba(146,198,57,.14); --primary-faint:rgba(146,198,57,.06);
-    --on-primary:var(--p-950); --accent:var(--p-300);
+    --bg:#141210; --bg-tint:#2A2724;
+    --surface:#1E1C1A; --surface-2:#2A2724; --surface-3:#35302A;
+    --border:#2E2A25; --border-strong:#4A443C;
+    --text:#F7F5F1; --text-2:#A19B8E; --text-3:#827D76;
+    --ink-fill:#F7F5F1; --on-ink:#141210;
+    --primary:var(--ink-fill); --primary-hover:#E8E4DA;
+    --primary-soft:var(--surface-2); --primary-faint:var(--surface);
+    --on-primary:var(--on-ink); --accent:#92C639;
     --ring:rgba(146,198,57,.28);
     --shadow-sm:0 1px 2px rgba(0,0,0,.5);
     --shadow:0 4px 18px rgba(0,0,0,.45);
@@ -63,13 +57,14 @@
   }
 }
 :root[data-theme="dark"]{
-  --bg:var(--n-950); --bg-tint:var(--p-950);
-  --surface:var(--n-900); --surface-2:var(--n-800); --surface-3:#303626;
-  --border:#2C3324; --border-strong:var(--n-700);
-  --text:var(--n-100); --text-2:var(--n-400); --text-3:var(--n-500);
-  --primary:var(--p-400); --primary-hover:var(--p-300);
-  --primary-soft:rgba(146,198,57,.14); --primary-faint:rgba(146,198,57,.06);
-  --on-primary:var(--p-950); --accent:var(--p-300);
+  --bg:#141210; --bg-tint:#2A2724;
+  --surface:#1E1C1A; --surface-2:#2A2724; --surface-3:#35302A;
+  --border:#2E2A25; --border-strong:#4A443C;
+  --text:#F7F5F1; --text-2:#A19B8E; --text-3:#827D76;
+  --ink-fill:#F7F5F1; --on-ink:#141210;
+  --primary:var(--ink-fill); --primary-hover:#E8E4DA;
+  --primary-soft:var(--surface-2); --primary-faint:var(--surface);
+  --on-primary:var(--on-ink); --accent:#92C639;
   --ring:rgba(146,198,57,.28);
   --shadow-sm:0 1px 2px rgba(0,0,0,.5);
   --shadow:0 4px 18px rgba(0,0,0,.45);
@@ -124,7 +119,7 @@ a{color:inherit;text-decoration:none}
 /* ─────────── PAGE HEAD ─────────── */
 .page-head{padding:3rem 0 2rem;max-width:60ch}
 @media(max-width:768px){.page-head{padding:2rem 0 1.5rem}}
-.kick{font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--primary);margin-bottom:.5rem}
+.kick{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--text-2);margin-bottom:.5rem}
 .page-head h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(27px,4.6vw,38px);letter-spacing:-1.1px;line-height:1.1}
 .page-head p{color:var(--text-2);font-size:15px;margin-top:.55rem}
 
@@ -226,13 +221,13 @@ a{color:inherit;text-decoration:none}
 }
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
-  padding:12px 24px;border-radius:var(--radius-pill);border:1.5px solid transparent;
+  padding:12px 24px;border-radius:var(--radius-sm);border:1.5px solid transparent;
   font-family:'Inter Tight',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer;
   transition:transform .18s,box-shadow .18s,background .18s,color .18s,border-color .18s;
 }
 .btn svg{width:16px;height:16px;flex-shrink:0}
-.btn-primary{background:var(--primary);color:var(--on-primary);box-shadow:0 4px 14px var(--ring)}
-.btn-primary:hover{background:var(--primary-hover);transform:translateY(-2px);box-shadow:0 8px 22px var(--ring)}
+.btn-primary{background:var(--primary);color:var(--on-primary);box-shadow:var(--shadow-sm)}
+.btn-primary:hover{background:var(--primary-hover);transform:translateY(-2px);box-shadow:var(--shadow)}
 .btn-ghost{background:var(--surface);color:var(--text);border-color:var(--border-strong)}
 .btn-ghost:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-2px)}
 @media(max-width:520px){.action-bar{flex-direction:column;padding:1.25rem}.btn{width:100%}}
@@ -469,7 +464,7 @@ footer p{font-size:12px;color:var(--text-3)}
     <div class="feature-card">
       <div class="fc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="13" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="10" cy="20" r="2.5"/></svg></div>
       <h3>Satu Skala Warna</h3>
-      <p>Seluruh aksen diturunkan dari primary <strong style="color:var(--primary);font-family:'DM Mono',monospace">#4C6F0F</strong>.</p>
+      <p>Seluruh aksen dokumen diturunkan dari satu warna merek <strong style="color:var(--paper-accent);font-family:'DM Mono',monospace">#4C6F0F</strong>.</p>
       <ul>
         <li>Garis header &amp; judul olive</li>
         <li>Blok total olive muda</li>

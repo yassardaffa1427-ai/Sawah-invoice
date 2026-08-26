@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#4C6F0F">
+<meta name="theme-color" content="#F7F5F1">
 <link rel="icon" type="image/png" href="/assets/logo%20sawah.png">
 <title>Dokumentasi — Sawah Studio Invoice App</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,42 +14,36 @@
 </script>
 <style>
 /* ════════════════════════════════════════════════════════════
-   SAWAH DESIGN SYSTEM — primary #4C6F0F (olive) + skala tonal
+   SAWAH DESIGN SYSTEM v2 — krem ↔ tinta monokrom, aksen #4C6F0F (olive)
    ════════════════════════════════════════════════════════════ */
 :root{
-  --p-50:#F6FBEF;  --p-100:#E9F4D7; --p-200:#D4E8B0; --p-300:#B4D57B;
-  --p-400:#92C639; --p-500:#72A022; --p-600:#4C6F0F; --p-700:#3E5B0B;
-  --p-800:#2E4309; --p-900:#213008; --p-950:#121905;
-
-  --n-0:#FFFFFF;   --n-50:#FAFBF7;  --n-100:#F2F4EC; --n-200:#E4E8D9;
-  --n-300:#CBD1BC; --n-400:#9BA48A; --n-500:#6F7862; --n-600:#545C48;
-  --n-700:#3E4534; --n-800:#272C1F; --n-900:#191D13; --n-950:#10130B;
-
-  /* MODE TERANG */
-  --bg:var(--n-50); --bg-tint:var(--p-50);
-  --surface:var(--n-0); --surface-2:var(--n-100); --surface-3:var(--n-200);
-  --border:var(--n-200); --border-strong:var(--n-300);
-  --text:var(--n-900); --text-2:var(--n-600); --text-3:var(--n-500);
-  --primary:var(--p-600); --primary-hover:var(--p-700);
-  --primary-soft:var(--p-100); --primary-faint:var(--p-50);
-  --on-primary:#FFFFFF; --accent:var(--p-700);
+  /* MODE TERANG (krem hangat) */
+  --bg:#F7F5F1; --bg-tint:#EFEBE4;
+  --surface:#FFFFFF; --surface-2:#EFEBE4; --surface-3:#DEDBD3;
+  --border:#DEDBD3; --border-strong:#C7C2B7;
+  --text:#1E1C1A; --text-2:#5E5A53; --text-3:#827D76;
+  --ink-fill:#38342F; --on-ink:#FFFFFF;
+  --primary:var(--ink-fill); --primary-hover:#4A453D;
+  --primary-soft:var(--surface-2); --primary-faint:var(--surface);
+  --on-primary:var(--on-ink); --accent:#4C6F0F;
   --ring:rgba(76,111,15,.20);
-  --shadow-sm:0 1px 2px rgba(24,32,10,.07);
-  --shadow:0 4px 18px rgba(24,32,10,.08);
-  --shadow-lg:0 20px 50px rgba(24,32,10,.16);
+  --shadow-sm:0 1px 2px rgba(30,26,22,.07);
+  --shadow:0 4px 18px rgba(30,26,22,.08);
+  --shadow-lg:0 20px 50px rgba(30,26,22,.16);
   color-scheme:light;
 
-  --radius:14px; --radius-sm:9px; --radius-lg:20px; --radius-pill:999px;
+  --radius:10px; --radius-sm:6px; --radius-lg:16px; --radius-pill:999px;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:var(--n-950); --bg-tint:var(--p-950);
-    --surface:var(--n-900); --surface-2:var(--n-800); --surface-3:#303626;
-    --border:#2C3324; --border-strong:var(--n-700);
-    --text:var(--n-100); --text-2:var(--n-400); --text-3:var(--n-500);
-    --primary:var(--p-400); --primary-hover:var(--p-300);
-    --primary-soft:rgba(146,198,57,.14); --primary-faint:rgba(146,198,57,.06);
-    --on-primary:var(--p-950); --accent:var(--p-300);
+    --bg:#141210; --bg-tint:#2A2724;
+    --surface:#1E1C1A; --surface-2:#2A2724; --surface-3:#35302A;
+    --border:#2E2A25; --border-strong:#4A443C;
+    --text:#F7F5F1; --text-2:#A19B8E; --text-3:#827D76;
+    --ink-fill:#F7F5F1; --on-ink:#141210;
+    --primary:var(--ink-fill); --primary-hover:#E8E4DA;
+    --primary-soft:var(--surface-2); --primary-faint:var(--surface);
+    --on-primary:var(--on-ink); --accent:#92C639;
     --ring:rgba(146,198,57,.28);
     --shadow-sm:0 1px 2px rgba(0,0,0,.5);
     --shadow:0 4px 18px rgba(0,0,0,.45);
@@ -58,13 +52,14 @@
   }
 }
 :root[data-theme="dark"]{
-  --bg:var(--n-950); --bg-tint:var(--p-950);
-  --surface:var(--n-900); --surface-2:var(--n-800); --surface-3:#303626;
-  --border:#2C3324; --border-strong:var(--n-700);
-  --text:var(--n-100); --text-2:var(--n-400); --text-3:var(--n-500);
-  --primary:var(--p-400); --primary-hover:var(--p-300);
-  --primary-soft:rgba(146,198,57,.14); --primary-faint:rgba(146,198,57,.06);
-  --on-primary:var(--p-950); --accent:var(--p-300);
+  --bg:#141210; --bg-tint:#2A2724;
+  --surface:#1E1C1A; --surface-2:#2A2724; --surface-3:#35302A;
+  --border:#2E2A25; --border-strong:#4A443C;
+  --text:#F7F5F1; --text-2:#A19B8E; --text-3:#827D76;
+  --ink-fill:#F7F5F1; --on-ink:#141210;
+  --primary:var(--ink-fill); --primary-hover:#E8E4DA;
+  --primary-soft:var(--surface-2); --primary-faint:var(--surface);
+  --on-primary:var(--on-ink); --accent:#92C639;
   --ring:rgba(146,198,57,.28);
   --shadow-sm:0 1px 2px rgba(0,0,0,.5);
   --shadow:0 4px 18px rgba(0,0,0,.45);
@@ -137,7 +132,7 @@ code{font-family:'DM Mono',monospace;font-size:.9em;background:var(--primary-sof
 
 /* ─────────── HEAD ─────────── */
 .doc-head{margin-bottom:2.5rem;max-width:62ch}
-.kick{font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--primary);margin-bottom:.5rem}
+.kick{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--text-2);margin-bottom:.5rem}
 .doc-head h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(28px,4.6vw,40px);letter-spacing:-1.2px;line-height:1.08}
 .doc-head p{color:var(--text-2);font-size:15.5px;margin-top:.6rem}
 
@@ -239,13 +234,13 @@ code{font-family:'DM Mono',monospace;font-size:.9em;background:var(--primary-sof
 .button-group{display:flex;gap:.65rem;flex-wrap:wrap}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
-  padding:11px 20px;border-radius:var(--radius-pill);border:1.5px solid transparent;
+  padding:11px 20px;border-radius:var(--radius-sm);border:1.5px solid transparent;
   font-family:'Inter Tight',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer;
   transition:transform .18s,box-shadow .18s,background .18s,color .18s,border-color .18s;
 }
 .btn svg{width:15px;height:15px;flex-shrink:0}
-.btn-primary{background:var(--primary);color:var(--on-primary);box-shadow:0 4px 14px var(--ring)}
-.btn-primary:hover{background:var(--primary-hover);transform:translateY(-2px);box-shadow:0 8px 22px var(--ring)}
+.btn-primary{background:var(--primary);color:var(--on-primary);box-shadow:var(--shadow-sm)}
+.btn-primary:hover{background:var(--primary-hover);transform:translateY(-2px);box-shadow:var(--shadow)}
 .btn-ghost{background:var(--surface);color:var(--text);border-color:var(--border-strong)}
 .btn-ghost:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-2px)}
 @media(max-width:520px){.button-group{flex-direction:column}.btn{width:100%}}
@@ -485,8 +480,8 @@ footer p{font-size:12px;color:var(--text-3)}
         <div class="comparison-item">
           <h4>Mode Terang</h4>
           <ul>
-            <li>Latar putih gading beraksen olive</li>
-            <li>Primary <code>#4C6F0F</code></li>
+            <li>Latar krem hangat <code>#F7F5F1</code></li>
+            <li>Tombol tinta pekat <code>#38342F</code></li>
             <li>Teks gelap kontras tinggi</li>
             <li>Bayangan halus untuk kedalaman</li>
           </ul>
@@ -494,9 +489,9 @@ footer p{font-size:12px;color:var(--text-3)}
         <div class="comparison-item">
           <h4>Mode Gelap</h4>
           <ul>
-            <li>Latar olive-hitam pekat</li>
-            <li>Primary naik ke <code>#92C639</code></li>
-            <li>Aksen tetap terbaca di latar gelap</li>
+            <li>Latar tinta hangat pekat <code>#141210</code></li>
+            <li>Tombol terbalik: fill terang di atas gelap</li>
+            <li>Aksen naik ke <code>#92C639</code></li>
             <li>Bayangan lebih dalam</li>
           </ul>
         </div>
@@ -514,20 +509,19 @@ footer p{font-size:12px;color:var(--text-3)}
         <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="13" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="10" cy="20" r="2.5"/></svg></span>
         Palet Warna
       </h2>
-      <p class="section-intro">Sebelas tingkat diturunkan dari satu primary. Nilai 600 adalah warna merek <code>#4C6F0F</code>; tingkat lain dipakai untuk latar, garis, dan status.</p>
+      <p class="section-intro">Skala netral krem (mode terang) ↔ tinta (mode gelap). Tombol dan komponen memakai isi tinta monokrom, bukan lagi hijau olive — satu warna merek (<code>#4C6F0F</code> / <code>#92C639</code>) tersisa sebagai aksen kecil: dot logo dan focus ring.</p>
 
       <div class="token-row">
-        <div class="sw"><i style="background:var(--p-50)"></i><b>50</b></div>
-        <div class="sw"><i style="background:var(--p-100)"></i><b>100</b></div>
-        <div class="sw"><i style="background:var(--p-200)"></i><b>200</b></div>
-        <div class="sw"><i style="background:var(--p-300)"></i><b>300</b></div>
-        <div class="sw"><i style="background:var(--p-400)"></i><b>400</b></div>
-        <div class="sw"><i style="background:var(--p-500)"></i><b>500</b></div>
-        <div class="sw"><i style="background:var(--p-600)"></i><b>600</b></div>
-        <div class="sw"><i style="background:var(--p-700)"></i><b>700</b></div>
-        <div class="sw"><i style="background:var(--p-800)"></i><b>800</b></div>
-        <div class="sw"><i style="background:var(--p-900)"></i><b>900</b></div>
-        <div class="sw"><i style="background:var(--p-950)"></i><b>950</b></div>
+        <div class="sw"><i style="background:#F7F5F1;border:1px solid #DEDBD3"></i><b>bg</b></div>
+        <div class="sw"><i style="background:#FFFFFF;border:1px solid #DEDBD3"></i><b>surface</b></div>
+        <div class="sw"><i style="background:#EFEBE4"></i><b>surface-2</b></div>
+        <div class="sw"><i style="background:#DEDBD3"></i><b>surface-3</b></div>
+        <div class="sw"><i style="background:#C7C2B7"></i><b>border-strong</b></div>
+        <div class="sw"><i style="background:#827D76"></i><b>text-3</b></div>
+        <div class="sw"><i style="background:#5E5A53"></i><b>text-2</b></div>
+        <div class="sw"><i style="background:#1E1C1A"></i><b>text</b></div>
+        <div class="sw"><i style="background:#38342F"></i><b>ink-fill</b></div>
+        <div class="sw"><i style="background:#4C6F0F"></i><b>accent</b></div>
       </div>
 
       <div class="table-scroll">
@@ -536,20 +530,21 @@ footer p{font-size:12px;color:var(--text-3)}
             <tr><th>Token</th><th>Nilai</th><th>Dipakai untuk</th></tr>
           </thead>
           <tbody>
-            <tr><td>--p-600</td><td><span class="chip" style="background:#4C6F0F"></span>#4C6F0F</td><td>Primary mode terang — tombol, judul aksen, garis dokumen</td></tr>
-            <tr><td>--p-400</td><td><span class="chip" style="background:#92C639"></span>#92C639</td><td>Primary mode gelap — cukup terang di latar pekat</td></tr>
-            <tr><td>--p-700</td><td><span class="chip" style="background:#3E5B0B"></span>#3E5B0B</td><td>Status hover tombol, teks aksen mode terang</td></tr>
-            <tr><td>--p-800</td><td><span class="chip" style="background:#2E4309"></span>#2E4309</td><td>Header tabel dokumen cetak</td></tr>
-            <tr><td>--p-100</td><td><span class="chip" style="background:#E9F4D7"></span>#E9F4D7</td><td>Latar lembut untuk badge, ikon, dan blok total</td></tr>
-            <tr><td>--p-50</td><td><span class="chip" style="background:#F6FBEF"></span>#F6FBEF</td><td>Latar pita seksi dan sorotan baris</td></tr>
-            <tr><td>--p-950</td><td><span class="chip" style="background:#121905"></span>#121905</td><td>Latar dasar mode gelap</td></tr>
+            <tr><td>--bg</td><td><span class="chip" style="background:#F7F5F1;border:1px solid #DEDBD3"></span>#F7F5F1</td><td>Latar halaman, mode terang</td></tr>
+            <tr><td>--surface</td><td><span class="chip" style="background:#FFFFFF;border:1px solid #DEDBD3"></span>#FFFFFF</td><td>Card, panel, mode terang</td></tr>
+            <tr><td>--text</td><td><span class="chip" style="background:#1E1C1A"></span>#1E1C1A</td><td>Teks utama, mode terang</td></tr>
+            <tr><td>--ink-fill</td><td><span class="chip" style="background:#38342F"></span>#38342F</td><td>Fill tombol primary, mode terang</td></tr>
+            <tr><td>--ink-fill (gelap)</td><td><span class="chip" style="background:#F7F5F1;border:1px solid #DEDBD3"></span>#F7F5F1</td><td>Fill tombol primary, mode gelap — terbalik: terang di atas gelap</td></tr>
+            <tr><td>--bg (gelap)</td><td><span class="chip" style="background:#141210"></span>#141210</td><td>Latar halaman, mode gelap</td></tr>
+            <tr><td>--accent</td><td><span class="chip" style="background:#4C6F0F"></span>#4C6F0F</td><td>Dot logo &amp; focus ring, mode terang</td></tr>
+            <tr><td>--accent (gelap)</td><td><span class="chip" style="background:#92C639"></span>#92C639</td><td>Dot logo &amp; focus ring, mode gelap</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="info-box">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-        <span>Netral juga dibuat beraksen olive (bukan abu-abu murni) agar seluruh antarmuka terasa berasal dari satu keluarga warna yang sama.</span>
+        <span>Netral dibuat beraksen krem hangat (bukan abu-abu murni) agar seluruh antarmuka terasa berasal dari satu keluarga warna yang sama.</span>
       </div>
     </section>
 
