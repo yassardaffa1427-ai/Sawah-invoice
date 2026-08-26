@@ -7,7 +7,7 @@
 <title>Dokumentasi — Sawah Studio Invoice App</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script>
 (function(){try{var t=localStorage.getItem('sawah-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
@@ -74,7 +74,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);
+  font-family:'Inter Tight',system-ui,sans-serif;background:var(--bg);color:var(--text);
   line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;
   transition:background-color .25s ease,color .25s ease;
 }
@@ -99,7 +99,7 @@ code{font-family:'DM Mono',monospace;font-size:.9em;background:var(--primary-sof
   display:grid;place-items:center;color:#fff;box-shadow:var(--shadow-sm);
 }
 .mark svg{width:19px;height:19px}
-.brand-name{font-family:'Syne',sans-serif;font-weight:800;font-size:14.5px;letter-spacing:-.2px;line-height:1.2;display:block;white-space:nowrap}
+.brand-name{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:14.5px;letter-spacing:-.2px;line-height:1.2;display:block;white-space:nowrap}
 .brand-sub{font-size:10.5px;color:var(--text-3);line-height:1.2}
 .icon-btn{
   width:36px;height:36px;flex-shrink:0;border-radius:var(--radius-pill);
@@ -137,13 +137,13 @@ code{font-family:'DM Mono',monospace;font-size:.9em;background:var(--primary-sof
 /* ─────────── HEAD ─────────── */
 .doc-head{margin-bottom:2.5rem;max-width:62ch}
 .kick{font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--primary);margin-bottom:.5rem}
-.doc-head h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,4.6vw,40px);letter-spacing:-1.2px;line-height:1.08}
+.doc-head h1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(28px,4.6vw,40px);letter-spacing:-1.2px;line-height:1.08}
 .doc-head p{color:var(--text-2);font-size:15.5px;margin-top:.6rem}
 
 /* ─────────── SECTION ─────────── */
 .section{margin-bottom:3.25rem;scroll-margin-top:82px}
 .section-title{
-  display:flex;align-items:center;gap:.7rem;font-family:'Syne',sans-serif;
+  display:flex;align-items:center;gap:.7rem;font-family:'Inter Tight',sans-serif;
   font-weight:700;font-size:22px;letter-spacing:-.5px;margin-bottom:.4rem;
 }
 .section-title .si{
@@ -161,7 +161,7 @@ code{font-family:'DM Mono',monospace;font-size:.9em;background:var(--primary-sof
   transition:transform .2s,box-shadow .2s;
 }
 .file-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-.file-name{font-family:'DM Mono',monospace;font-weight:500;font-size:13px;color:var(--primary);margin-bottom:.4rem;word-break:break-all}
+.file-name{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;color:var(--primary);margin-bottom:.4rem;word-break:break-all}
 .file-role{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-3);margin-bottom:.5rem}
 .file-desc{font-size:13px;color:var(--text-2);margin-bottom:.85rem}
 .file-features{list-style:none;font-size:12.5px;display:flex;flex-direction:column;gap:.3rem}
@@ -187,13 +187,13 @@ code{font-family:'DM Mono',monospace;font-size:.9em;background:var(--primary-sof
 .step-num{
   width:34px;height:34px;border-radius:var(--radius-pill);background:var(--primary);
   color:var(--on-primary);display:grid;place-items:center;font-weight:800;font-size:14px;
-  font-family:'Syne',sans-serif;
+  font-family:'Inter Tight',sans-serif;
 }
 .wf-line{width:2px;flex:1;background:var(--border);margin:6px 0}
 .workflow-step:last-child .wf-line{display:none}
 .step-content{padding-bottom:1.4rem}
 .workflow-step:last-child .step-content{padding-bottom:0}
-.step-content h4{font-family:'Syne',sans-serif;font-size:14.5px;font-weight:700;margin-bottom:.3rem}
+.step-content h4{font-family:'Inter Tight',sans-serif;font-size:14.5px;font-weight:700;margin-bottom:.3rem}
 .step-content p{font-size:13px;color:var(--text-2);margin:0}
 
 /* ─────────── INFO BOX ─────────── */
@@ -222,7 +222,7 @@ code{font-family:'DM Mono',monospace;font-size:.9em;background:var(--primary-sof
 @media(max-width:640px){.token-row{grid-template-columns:repeat(6,1fr)}}
 .sw{border-radius:8px;overflow:hidden;border:1px solid var(--border)}
 .sw i{display:block;height:46px}
-.sw b{display:block;font-size:9.5px;font-weight:600;text-align:center;padding:5px 2px;color:var(--text-3);font-family:'DM Mono',monospace}
+.sw b{display:block;font-size:9.5px;font-weight:600;text-align:center;padding:5px 2px;color:var(--text-3);font-family:'JetBrains Mono',monospace}
 .token-table{width:100%;border-collapse:collapse;font-size:12.5px;overflow:hidden;border-radius:var(--radius);border:1px solid var(--border)}
 .token-table th{
   text-align:left;padding:10px 14px;font-size:10.5px;letter-spacing:.9px;text-transform:uppercase;
@@ -230,7 +230,7 @@ code{font-family:'DM Mono',monospace;font-size:.9em;background:var(--primary-sof
 }
 .token-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text-2);background:var(--surface)}
 .token-table tr:last-child td{border-bottom:none}
-.token-table td:first-child{font-family:'DM Mono',monospace;color:var(--primary);white-space:nowrap}
+.token-table td:first-child{font-family:'JetBrains Mono',monospace;color:var(--primary);white-space:nowrap}
 .chip{display:inline-block;width:14px;height:14px;border-radius:4px;border:1px solid var(--border-strong);vertical-align:-2px;margin-right:.45rem}
 .table-scroll{overflow-x:auto}
 
@@ -239,7 +239,7 @@ code{font-family:'DM Mono',monospace;font-size:.9em;background:var(--primary-sof
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
   padding:11px 20px;border-radius:var(--radius-pill);border:1.5px solid transparent;
-  font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer;
+  font-family:'Inter Tight',sans-serif;font-size:13.5px;font-weight:600;cursor:pointer;
   transition:transform .18s,box-shadow .18s,background .18s,color .18s,border-color .18s;
 }
 .btn svg{width:15px;height:15px;flex-shrink:0}

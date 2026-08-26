@@ -7,7 +7,7 @@
 <title>Sawah Studio — Invoice App</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script>
 /* Terapkan tema sebelum render supaya tidak ada kedip (FOUC) */
 (function(){try{var t=localStorage.getItem('sawah-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
@@ -110,7 +110,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  font-family:'DM Sans',system-ui,sans-serif;
+  font-family:'Inter Tight',system-ui,sans-serif;
   background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;
   -webkit-font-smoothing:antialiased;
   transition:background-color .25s ease,color .25s ease;
@@ -138,7 +138,7 @@ a{color:inherit;text-decoration:none}
 }
 .mark svg{width:20px;height:20px}
 .brand-text{min-width:0}
-.brand-name{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;letter-spacing:-.2px;line-height:1.2;white-space:nowrap}
+.brand-name{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:15px;letter-spacing:-.2px;line-height:1.2;white-space:nowrap}
 .brand-sub{font-size:10.5px;color:var(--text-3);letter-spacing:.4px;line-height:1.2}
 .topnav{display:flex;align-items:center;gap:.25rem}
 .topnav a{
@@ -183,7 +183,7 @@ a{color:inherit;text-decoration:none}
 }
 .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--primary)}
 h1{
-  font-family:'Syne',sans-serif;font-weight:800;letter-spacing:-1.5px;
+  font-family:'Inter Tight',sans-serif;font-weight:800;letter-spacing:-1.5px;
   font-size:clamp(34px,5.2vw,54px);line-height:1.06;margin-bottom:1.1rem;
 }
 h1 .hl{color:var(--primary)}
@@ -193,7 +193,7 @@ h1 .hl{color:var(--primary)}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
   padding:13px 24px;border-radius:var(--radius-pill);border:1.5px solid transparent;
-  font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;
+  font-family:'Inter Tight',sans-serif;font-size:14px;font-weight:600;cursor:pointer;
   transition:transform .18s,box-shadow .18s,background .18s,color .18s,border-color .18s;
 }
 .btn svg{width:16px;height:16px;flex-shrink:0}
@@ -215,27 +215,27 @@ h1 .hl{color:var(--primary)}
   display:flex;justify-content:space-between;align-items:flex-start;
   padding:1.1rem 1.25rem;background:linear-gradient(135deg,var(--p-600),var(--p-800));color:#fff;
 }
-.mock-top .t1{font-family:'Syne',sans-serif;font-weight:800;font-size:13px;letter-spacing:.3px}
+.mock-top .t1{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:13px;letter-spacing:.3px}
 .mock-top .t2{font-size:10px;opacity:.72;margin-top:2px}
-.mock-top .inv{font-family:'Syne',sans-serif;font-weight:800;font-size:17px;letter-spacing:1px;color:var(--p-200)}
+.mock-top .inv{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:17px;letter-spacing:1px;color:var(--p-200)}
 .mock-body{padding:1.1rem 1.25rem}
 .mock-line{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px dashed var(--border);font-size:12px}
 .mock-line span:first-child{color:var(--text-2)}
-.mock-line span:last-child{font-family:'DM Mono',monospace;color:var(--text);font-weight:500}
+.mock-line span:last-child{font-family:'JetBrains Mono',monospace;color:var(--text);font-weight:500}
 .mock-bar{height:7px;border-radius:4px;background:var(--surface-3)}
 .mock-total{
   display:flex;justify-content:space-between;align-items:center;margin-top:.9rem;
   padding:.85rem 1rem;border-radius:var(--radius-sm);background:var(--primary-soft);
 }
 .mock-total .lbl{font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--accent)}
-.mock-total .val{font-family:'Syne',sans-serif;font-weight:800;font-size:19px;color:var(--primary)}
+.mock-total .val{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:19px;color:var(--primary)}
 
 /* ─────────── SECTION SHELL ─────────── */
 section{padding:4.5rem 0}
 @media(max-width:768px){section{padding:3rem 0}}
 .sec-head{margin-bottom:2.25rem;max-width:62ch}
 .sec-kicker{font-size:11.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--primary);margin-bottom:.6rem}
-.sec-head h2{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(23px,3.2vw,32px);letter-spacing:-.7px;line-height:1.15}
+.sec-head h2{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:clamp(23px,3.2vw,32px);letter-spacing:-.7px;line-height:1.15}
 .sec-head p{color:var(--text-2);font-size:15px;margin-top:.65rem}
 
 /* ─────────── NAV CARDS ─────────── */
@@ -257,7 +257,7 @@ section{padding:4.5rem 0}
   background:var(--primary-soft);color:var(--primary);margin-bottom:.35rem;
 }
 .card-ico svg{width:20px;height:20px}
-.card-link h3{font-family:'Syne',sans-serif;font-weight:700;font-size:16.5px;letter-spacing:-.2px}
+.card-link h3{font-family:'Inter Tight',sans-serif;font-weight:700;font-size:16.5px;letter-spacing:-.2px}
 .card-link p{font-size:13.5px;color:var(--text-2)}
 .card-go{margin-top:auto;padding-top:.7rem;font-size:12.5px;font-weight:600;color:var(--primary);display:flex;align-items:center;gap:.4rem}
 .card-go svg{width:13px;height:13px;transition:transform .22s}
@@ -286,13 +286,13 @@ section{padding:4.5rem 0}
 }
 .step-n{
   width:38px;height:38px;border-radius:var(--radius-pill);display:grid;place-items:center;
-  background:var(--primary);color:var(--on-primary);font-family:'Syne',sans-serif;
+  background:var(--primary);color:var(--on-primary);font-family:'Inter Tight',sans-serif;
   font-weight:800;font-size:15px;margin-bottom:.9rem;
 }
-.step h4{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:.4rem}
+.step h4{font-family:'Inter Tight',sans-serif;font-size:15px;font-weight:700;margin-bottom:.4rem}
 .step p{font-size:13px;color:var(--text-2)}
 .step code{
-  font-family:'DM Mono',monospace;font-size:11.5px;background:var(--primary-soft);
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;background:var(--primary-soft);
   color:var(--accent);padding:2px 6px;border-radius:5px;
 }
 
@@ -329,7 +329,24 @@ footer{border-top:1px solid var(--border);background:var(--surface);padding:2.5r
 .sw i{display:block;height:52px}
 .sw b{display:block;font-size:9.5px;font-weight:600;text-align:center;padding:5px 2px;color:var(--text-3);font-family:'DM Mono',monospace}
 .sw.is-primary i{box-shadow:inset 0 0 0 2px var(--text)}
+
+/* ── Motion: state awal sebelum animasi masuk (dilepas oleh script di bawah) ── */
+html.motion-ready [data-anim],
+html.motion-ready [data-anim-group]>*{opacity:0}
 </style>
+<script>
+/* Motion: sembunyikan elemen ber-[data-anim] sebelum dianimasikan.
+   Dilewati kalau pengguna minta reduced motion, dan ada jaring pengaman
+   2 detik supaya konten tetap muncul kalau modul gagal dimuat. */
+(function(){
+  try{
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var d=document.documentElement;
+    d.classList.add('motion-ready');
+    setTimeout(function(){d.classList.remove('motion-ready');},2000);
+  }catch(e){}
+})();
+</script>
 </head>
 <body>
 
@@ -368,10 +385,10 @@ footer{border-top:1px solid var(--border);background:var(--surface);padding:2.5r
 <div class="hero">
   <div class="wrap hero-in">
     <div>
-      <span class="eyebrow"><span class="dot"></span> Fresh made by people of sawah</span>
-      <h1>Invoice rapi,<br><span class="hl">selesai dalam</span> semenit.</h1>
-      <p class="lead">Isi datanya, angkanya terhitung sendiri, lalu simpan jadi PDF atau Excel. Tanpa akun, tanpa server — semuanya jalan langsung di browser.</p>
-      <div class="cta-row">
+      <span class="eyebrow" data-anim="hero"><span class="dot"></span> Fresh made by people of sawah</span>
+      <h1 data-anim="hero">Invoice rapi,<br><span class="hl">selesai dalam</span> semenit.</h1>
+      <p class="lead" data-anim="hero">Isi datanya, angkanya terhitung sendiri, lalu simpan jadi PDF atau Excel. Tanpa akun, tanpa server — semuanya jalan langsung di browser.</p>
+      <div class="cta-row" data-anim="hero">
         <a href="/invoice-edit" class="btn btn-primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
           Mulai Buat Invoice
@@ -383,7 +400,7 @@ footer{border-top:1px solid var(--border);background:var(--surface);padding:2.5r
       </div>
     </div>
 
-    <div class="mock" aria-hidden="true">
+    <div class="mock" data-anim="mock" aria-hidden="true">
       <div class="mock-top">
         <div>
           <div class="t1">SAWAH STUDIO</div>
@@ -408,13 +425,13 @@ footer{border-top:1px solid var(--border);background:var(--surface);padding:2.5r
 <!-- ══════════ NAVIGASI ══════════ -->
 <section>
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head" data-anim="reveal">
       <div class="sec-kicker">Mulai dari sini</div>
       <h2>Tiga halaman, satu alur kerja</h2>
       <p>Kalkulator untuk membuat, preview untuk memeriksa, dokumentasi kalau butuh penjelasan lengkap.</p>
     </div>
 
-    <div class="cards">
+    <div class="cards" data-anim-group>
       <a href="/invoice-edit" class="card-link">
         <span class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
         <h3>Kalkulator Invoice</h3>
@@ -443,13 +460,13 @@ footer{border-top:1px solid var(--border);background:var(--surface);padding:2.5r
 <div class="feat-band">
   <section id="fitur">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" data-anim="reveal">
         <div class="sec-kicker">Fitur</div>
         <h2>Semua yang dibutuhkan untuk menagih</h2>
         <p>Tidak ada yang berlebihan — hanya hal-hal yang benar-benar dipakai saat membuat invoice.</p>
       </div>
 
-      <div class="feats">
+      <div class="feats" data-anim-group>
         <div class="feat"><h4><span class="fi">🌗</span> Tema Terang &amp; Gelap</h4><p>Ganti tema kapan saja, atau biarkan mengikuti pengaturan sistem. Pilihanmu diingat.</p></div>
         <div class="feat"><h4><span class="fi">📱</span> Responsif Penuh</h4><p>Layout menyesuaikan dari desktop lebar sampai layar ponsel kecil.</p></div>
         <div class="feat"><h4><span class="fi">🧮</span> Hitung Otomatis</h4><p>Subtotal, diskon, dan pajak diperbarui seketika tiap kali angka berubah.</p></div>
@@ -467,12 +484,12 @@ footer{border-top:1px solid var(--border);background:var(--surface);padding:2.5r
 <!-- ══════════ LANGKAH ══════════ -->
 <section id="langkah">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head" data-anim="reveal">
       <div class="sec-kicker">Cara pakai</div>
       <h2>Tiga langkah sampai terkirim</h2>
     </div>
 
-    <div class="steps">
+    <div class="steps" data-anim-group>
       <div class="step">
         <div class="step-n">1</div>
         <h4>Buka Kalkulator</h4>
@@ -496,12 +513,12 @@ footer{border-top:1px solid var(--border);background:var(--surface);padding:2.5r
 <div class="feat-band">
   <section>
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" data-anim="reveal">
         <div class="sec-kicker">Design system</div>
         <h2>Satu warna, sebelas tingkat</h2>
         <p>Seluruh antarmuka dibangun dari satu skala tonal yang diturunkan dari primary <strong style="color:var(--primary);font-family:'DM Mono',monospace">#4C6F0F</strong> — dipakai konsisten di mode terang maupun gelap.</p>
       </div>
-      <div class="swatches">
+      <div class="swatches" data-anim-group>
         <div class="sw"><i style="background:var(--p-50)"></i><b>50</b></div>
         <div class="sw"><i style="background:var(--p-100)"></i><b>100</b></div>
         <div class="sw"><i style="background:var(--p-200)"></i><b>200</b></div>
@@ -521,12 +538,12 @@ footer{border-top:1px solid var(--border);background:var(--surface);padding:2.5r
 <!-- ══════════ FAQ ══════════ -->
 <section id="faq">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head" data-anim="reveal">
       <div class="sec-kicker">FAQ</div>
       <h2>Pertanyaan yang sering muncul</h2>
     </div>
 
-    <div class="faq-list">
+    <div class="faq-list" data-anim-group>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
           <span>Bagaimana cara membuat invoice baru?</span>
@@ -626,6 +643,55 @@ function toggleFaq(btn){
   var item=btn.closest('.faq-item');
   var open=item.classList.toggle('open');
   btn.setAttribute('aria-expanded',open?'true':'false');
+}
+</script>
+<script type="module">
+/* ══════════ MOTION (vendor/motion.min.js) ══════════ */
+import { animate, inView, stagger } from '/vendor/motion.min.js';
+
+const root = document.documentElement;
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ease = [0.22, 1, 0.36, 1];
+
+/* Pindahkan state "tersembunyi" dari CSS ke inline style, lalu lepas class-nya
+   supaya tidak ada kedip kalau animasi belum sempat jalan. */
+const anims = [...document.querySelectorAll('[data-anim]')];
+if (!reduce) anims.forEach(el => { el.style.opacity = '0'; });
+root.classList.remove('motion-ready');
+
+if (!reduce) {
+  /* ── Hero: masuk langsung saat load ── */
+  animate(
+    '.hero-in [data-anim="hero"]',
+    { opacity: [0, 1], transform: ['translateY(14px)', 'translateY(0px)'] },
+    { duration: 0.55, ease, delay: stagger(0.08) }
+  );
+
+  animate(
+    '.hero-in [data-anim="mock"]',
+    { opacity: [0, 1], transform: ['translateY(22px) scale(.97)', 'translateY(0px) scale(1)'] },
+    { duration: 0.7, ease, delay: 0.22 }
+  );
+
+  /* ── Sisanya: muncul saat masuk viewport ── */
+  const reveal = (el, delay = 0) => animate(
+    el,
+    { opacity: [0, 1], transform: ['translateY(18px)', 'translateY(0px)'] },
+    { duration: 0.5, ease, delay }
+  );
+
+  document.querySelectorAll('[data-anim="reveal"]').forEach(el => {
+    inView(el, () => { reveal(el); }, { amount: 0.25 });
+  });
+
+  /* Grup: anak-anaknya menyusul satu per satu */
+  document.querySelectorAll('[data-anim-group]').forEach(group => {
+    const items = [...group.children];
+    items.forEach(el => { el.style.opacity = '0'; });
+    inView(group, () => {
+      items.forEach((el, i) => reveal(el, i * 0.07));
+    }, { amount: 0.15 });
+  });
 }
 </script>
 </body>
