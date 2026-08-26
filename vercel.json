@@ -2,8 +2,11 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
-    { "source": "/invoice_sawah", "destination": "/index.html" },
+    { "source": "/homepage", "destination": "/index.html" },
+    { "source": "/invoice-edit", "destination": "/invoice_sawah.html" },
+    { "source": "/edit", "destination": "/invoice_sawah.html" },
     { "source": "/preview", "destination": "/invoice-preview-template.html" },
-    { "source": "/guide", "destination": "/RINGKASAN_FITUR.html" }
+    { "source": "/guide", "destination": "/RINGKASAN_FITUR.html" },
+    { "source": "/panduan", "destination": "/RINGKASAN_FITUR.html" }
   ]
 }
