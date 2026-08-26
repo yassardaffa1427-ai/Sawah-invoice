@@ -1,0 +1,9 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/invoice_sawah", "destination": "/index.html" },
+    { "source": "/preview", "destination": "/invoice-preview-template.html" },
+    { "source": "/guide", "destination": "/RINGKASAN_FITUR.html" }
+  ]
+}
