@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sawah Studio - Invoice App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+            color: #efefef;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #282828;
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo-name {
+            color: #fff;
+        }
+
+        .logo-sub {
+            color: #d4a843;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 28px;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #888;
+        }
+
+        .hero {
+            background: rgba(212, 168, 67, 0.05);
+            border: 1px solid #282828;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 24px;
+            color: #d4a843;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 15px;
+            color: #aaa;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .nav-card {
+            background: #181818;
+            border: 2px solid #282828;
+            border-radius: 10px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .nav-card:hover {
+            border-color: #d4a843;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(212, 168, 67, 0.2);
+        }
+
+        .nav-icon {
+            font-size: 32px;
+        }
+
+        .nav-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 18px;
+            color: #fff;
+            margin: 0;
+        }
+
+        .nav-card p {
+            font-size: 13px;
+            color: #888;
+            margin: 0;
+        }
+
+        .features {
+            margin: 4rem 0;
+            background: #181818;
+            border: 1px solid #282828;
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .features h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 22px;
+            color: #d4a843;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            padding: 1rem;
+            background: #1f1f1f;
+            border-radius: 8px;
+            border-left: 3px solid #d4a843;
+        }
+
+        .feature-item h4 {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-item p {
+            font-size: 12px;
+            color: #888;
+            margin: 0;
+        }
+
+        .quick-start {
+            background: rgba(212, 168, 67, 0.1);
+            border: 1px solid #d4a843;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .quick-start h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px;
+            color: #d4a843;
+            margin-bottom: 1.5rem;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .step {
+            padding: 1.5rem;
+            background: #1f1f1f;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: #d4a843;
+            color: #0d0d0d;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 16px;
+            font-family: 'Syne', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .step h4 {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            font-size: 12px;
+            color: #888;
+            margin: 0;
+        }
+
+        .cta-section {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #d4a843;
+            color: #0d0d0d;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.88;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #282828;
+            color: #fff;
+            border: 1px solid #d4a843;
+        }
+
+        .btn-secondary:hover {
+            background: #1f1f1f;
+        }
+
+        .faq {
+            margin: 3rem 0;
+        }
+
+        .faq h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 22px;
+            color: #d4a843;
+            margin-bottom: 1.5rem;
+        }
+
+        .faq-item {
+            background: #181818;
+            border: 1px solid #282828;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #fff;
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover {
+            background: #1f1f1f;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            display: none;
+            background: #0d0d0d;
+            color: #888;
+            font-size: 13px;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            display: block;
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #282828;
+            margin-top: 4rem;
+            color: #666;
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 22px;
+            }
+
+            .nav-grid, .feature-list, .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 1.5rem;
+            }
+
+            .cta-section {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-name">SAWAH STUDIO</span>
+                <div class="logo-sub">INVOICE APP</div>
+            </div>
+            <p class="tagline">Fresh made by people of sawah</p>
+            <h1>Aplikasi Invoice Professional</h1>
+            <p class="subtitle">Buat, preview, dan export invoice dengan mudah</p>
+        </header>
+
+        <div class="hero">
+            <h2>Aplikasi Invoice Modern & Responsif</h2>
+            <p>Dibuat khusus untuk memudahkan pembuatan invoice dengan fitur real-time calculation, preview profesional, dan export ke Excel atau PDF dalam beberapa klik.</p>
+        </div>
+
+        <div class="nav-grid">
+            <a href="/invoice-edit" class="nav-card">
+                <div class="nav-icon">📝</div>
+                <h3>Kalkulator Invoice</h3>
+                <p>Buat dan kelola invoice secara interaktif dengan kalkulasi otomatis</p>
+            </a>
+
+            <a href="/preview" class="nav-card">
+                <div class="nav-icon">👁️</div>
+                <h3>Contoh Preview</h3>
+                <p>Lihat tampilan profesional invoice yang siap cetak</p>
+            </a>
+
+            <a href="/guide" class="nav-card">
+                <div class="nav-icon">🗺️</div>
+                <h3>Panduan & Ringkasan</h3>
+                <p>Panduan visual lengkap cara membuat invoice step by step</p>
+            </a>
+        </div>
+
+        <div class="features">
+            <h2>✨ Fitur-Fitur Unggulan</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h4>📱 Fully Responsive</h4>
+                    <p>Bekerja sempurna di desktop, tablet, dan mobile device</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🧮 Auto Calculation</h4>
+                    <p>Perhitungan real-time untuk total, diskon, dan pajak</p>
+                </div>
+                <div class="feature-item">
+                    <h4>👁️ Professional Preview</h4>
+                    <p>Tampilan invoice siap cetak yang modern dan professional</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🖨️ Print & PDF</h4>
+                    <p>Cetak langsung atau simpan sebagai file PDF</p>
+                </div>
+                <div class="feature-item">
+                    <h4>📊 Excel Export</h4>
+                    <p>Export ke format Excel dengan formula dan styling</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🎨 Dark Modern UI</h4>
+                    <p>Desain modern dengan dark theme yang elegan</p>
+                </div>
+                <div class="feature-item">
+                    <h4>⚙️ Multiple Payment</h4>
+                    <p>6 pilihan metode pembayaran (Transfer, QRIS, Dana, dll)</p>
+                </div>
+                <div class="feature-item">
+                    <h4>📋 Detailed Summary</h4>
+                    <p>Ringkasan lengkap dengan breakdown diskon dan pajak</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🎯 User Guide</h4>
+                    <p>Panduan visual 6 langkah mudah dalam aplikasi</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-start">
+            <h2>🚀 Quick Start - 3 Langkah Mudah</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h4>Buka Kalkulator</h4>
+                    <p>Klik menu Kalkulator Invoice (/invoice-edit) untuk membuat invoice baru</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h4>Isi Data</h4>
+                    <p>Masukkan detail invoice, pembeli, item, dan metode bayar</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h4>Preview & Export</h4>
+                    <p>Klik Cetak PDF untuk simpan PDF, atau Export Excel</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <a href="/invoice-edit" class="btn btn-primary">
+                🚀 Mulai Buat Invoice (/invoice-edit)
+            </a>
+            <a href="/guide" class="btn btn-secondary">
+                📖 Baca Dokumentasi (/guide)
+            </a>
+        </div>
+
+        <div class="faq">
+            <h2>❓ Pertanyaan Umum</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Bagaimana cara membuat invoice baru?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Buka halaman <a href="/invoice-edit" style="color:#d4a843">/invoice-edit</a>, lalu isi detail invoice, pembeli, item, diskon, dan pajak.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Apakah data invoice otomatis tersimpan?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Tidak, data hanya tersimpan selama tab browser terbuka. Untuk menyimpan, gunakan fitur Cetak PDF atau Export Excel.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Bagaimana cara menyimpan invoice sebagai PDF?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>1. Klik tombol "Cetak PDF" di aplikasi</p>
+                    <p style="margin-top: 0.75rem;">2. Di dialog cetak browser, pilih "Save as PDF"</p>
+                    <p style="margin-top: 0.75rem;">3. Pilih lokasi folder dan klik Save</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Apakah aplikasi ini offline-ready?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Ya, 100% berjalan di browser tanpa memerlukan server backend tambahan.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Sawah Studio Invoice App v1.0</p>
+            <p>Dibuat dengan ❤️ untuk memudahkan pengelolaan invoice Anda</p>
+            <p style="margin-top: 1rem;">© 2024 Fresh made by people of sawah</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleFaq(element) {
+            const faqItem = element.closest('.faq-item');
+            faqItem.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
