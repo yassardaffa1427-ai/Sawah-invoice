@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="theme-color" content="#F7F5F1">
 <link rel="icon" type="image/png" href="/assets/logo%20sawah.png">
-<title>Kalkulator Invoice — Sawah Studio</title>
+<title>Kalkulator Invoice — Kirim.in</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
@@ -447,7 +447,7 @@ td input::placeholder{color:var(--placeholder)}
 <header class="topbar">
   <div class="topbar-in">
     <a class="brand" href="/">
-      <span class="brand-name">SAWAH STUDIO</span>
+      <span class="brand-name">Kirim.in</span>
       <span class="brand-badge">Trial</span>
     </a>
 
@@ -848,7 +848,7 @@ function exportExcel(){
   const wsData = [];
 
   // Baris 1-3: header perusahaan
-  wsData.push(['SAWAH STUDIO']);                           // A1
+  wsData.push(['Kirim.in']);                                // A1
   wsData.push(['Fresh made by people of sawah']);          // A2
   wsData.push(['y26site.framer.ai | +62 85810803909']);    // A3
   wsData.push([]);                                         // A4 kosong
@@ -900,7 +900,7 @@ function exportExcel(){
   ];
 
   ws['!merges'] = [
-    {s:{r:0,c:0}, e:{r:0,c:5}},  // A1:F1 — SAWAH STUDIO
+    {s:{r:0,c:0}, e:{r:0,c:5}},  // A1:F1 — Kirim.in
     {s:{r:1,c:0}, e:{r:1,c:5}},  // A2:F2
     {s:{r:2,c:0}, e:{r:2,c:5}},  // A3:F3
     {s:{r:4,c:0}, e:{r:4,c:5}},  // A5:F5 INVOICE
@@ -1035,7 +1035,7 @@ function generatePrintContent(){
   document.getElementById('printContent').innerHTML = `
     <div class="print-header">
       <div class="print-company">
-        <h1>SAWAH STUDIO</h1>
+        <h1>Kirim.in</h1>
         <p>Fresh made by people of sawah</p>
         <p>y26site.framer.ai &nbsp;·&nbsp; +62 858 1080 3909</p>
       </div>
@@ -1089,7 +1089,7 @@ function generatePrintContent(){
 
       <div class="print-sign">
         <p>Terima kasih telah mempercayai kami.</p>
-        <p>Invoice ini dibuat dengan Sawah Studio Invoice App</p>
+        <p>Kirim.in by Sawah Studio</p>
       </div>
     </div>
   `;

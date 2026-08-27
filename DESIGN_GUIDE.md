@@ -106,19 +106,14 @@ Tidak ada lagi tombol hijau/gradasi. Beda tier/plan ditandai lewat teks & badge,
 
 ---
 
-## 6. Kartu Pricing (3 tier)
+## 6. Kartu Pricing (Gratis & Berbayar)
 
-Kartu "populer" tidak lagi disorot dengan glow warna — dibalik jadi panel tinta solid (teks putih di atas latar `--ink-2`), pola kontras klasik yang tetap terasa istimewa tanpa keluar dari palet monokrom.
-
-| | **Gratis** | **Berbayar** (populer, kartu dibalik) | **Business Pro** |
-|---|---|---|---|
-| Harga | $0 | $5/bulan | $15/bulan |
-| Invoice/bulan | 10 | 30 | 70 |
-| Badge/logo kustom | ✗ | ✓ | ✓ |
-| Arsip cloud | ✓ | ✓ | ✓ |
-| Perpanjangan | — | Otomatis | Otomatis |
-
-Layout: grid 3 kolom di desktop, turun ke 1 kolom di mobile (breakpoint 820px), 2 kolom di tablet (821–1080px).
+Layout kartu pricing menggunakan struktur horizontal 2 kartu besar (stacked):
+- **Desktop**: Grid 2 kolom per kartu — sisi kiri berisi informasi paket (badge tier, judul, deskripsi, daftar fitur, tombol CTA), sisi kanan berisi banner visual mockup (`banner free.png` dan `banner pro.png`).
+- **Mobile**: Responsif otomatis dengan `grid-template-areas` — banner gambar berada di posisi atas (skala penuh auto sesuai padding kartu), dan teks konten berada di bawahnya.
+- **Kontras Tema**:
+  - **Gratis**: Menggunakan panel standar (`--surface`) dengan tombol primary.
+  - **Berbayar (Pro)**: Inverted contrast — panel tinta gelap (`#1E1C1A`) di mode terang dengan tombol putih, dan panel terang (`#FFFFFF`) di mode gelap dengan tombol hitam pekat.
 
 ---
 

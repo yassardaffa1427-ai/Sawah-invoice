@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#F7F5F1">
 <link rel="icon" type="image/png" href="/assets/logo%20sawah.png">
-<title>Sawah Studio — Invoice App</title>
+<title>Kirim.in — Invoice App</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -316,39 +316,108 @@ section{padding:4.5rem 0}
 }
 
 /* ─────────── HARGA ─────────── */
-.pricing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;max-width:820px}
-@media(max-width:820px){.pricing-grid{grid-template-columns:1fr}}
+.pricing-stack{display:flex;flex-direction:column;gap:1.75rem;max-width:1020px;margin:0 auto}
 .price-card{
-  padding:1.75rem;border-radius:var(--radius-lg);background:var(--surface);
-  border:1px solid var(--border);display:flex;flex-direction:column;
+  padding:2.25rem 2.5rem;border-radius:20px;background:var(--surface);
+  border:1px solid var(--border);display:grid;grid-template-columns:1fr 1.25fr;
+  grid-template-areas:"content banner";gap:2.5rem;align-items:center;
+  box-shadow:var(--shadow-sm);transition:border-color .2s,box-shadow .2s;
 }
-.price-card.pro{background:var(--ink-fill);border-color:var(--ink-fill)}
+.price-card:hover{box-shadow:var(--shadow);border-color:var(--border-strong)}
+.price-content{grid-area:content;display:flex;flex-direction:column;min-width:0}
 .price-badge{
-  display:inline-flex;align-self:flex-start;padding:5px 12px;border-radius:var(--radius-pill);
-  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.09em;
+  display:inline-flex;align-self:flex-start;padding:4px 12px;border-radius:var(--radius-pill);
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.09em;
   text-transform:uppercase;border:1px solid var(--border-strong);color:var(--text-2);margin-bottom:1.1rem;
 }
-.price-card.pro .price-badge{border-color:var(--on-ink);color:var(--on-ink);opacity:.85}
-.price-card h3{font-family:'JetBrains Mono',monospace;font-weight:800;font-size:19px;letter-spacing:-.3px}
-.price-card.pro h3{color:var(--on-ink)}
-.price-card>p{font-size:13.5px;color:var(--text-2);margin-top:.4rem;margin-bottom:1.4rem}
-.price-card.pro>p{color:var(--on-ink);opacity:.72}
-.price-feats{display:flex;flex-direction:column;gap:.7rem;margin-top:auto}
-.price-feats li{display:flex;align-items:flex-start;gap:.6rem;font-size:13.5px;color:var(--text);line-height:1.4}
-.price-card.pro .price-feats li{color:var(--on-ink)}
-.price-feats svg{width:16px;height:16px;flex-shrink:0;margin-top:1px}
+.price-card h3{font-family:'Inter Tight',sans-serif;font-weight:800;font-size:clamp(22px,2.4vw,27px);letter-spacing:-.6px;line-height:1.18;margin-bottom:.45rem}
+.price-card .price-content>p{font-size:14px;color:var(--text-2);line-height:1.5;margin-bottom:1.5rem}
+.price-feats{display:flex;flex-direction:column;gap:.75rem;margin-bottom:1.75rem;list-style:none}
+.price-feats li{display:flex;align-items:flex-start;gap:.65rem;font-size:13.5px;color:var(--text);line-height:1.45}
+.price-feats svg{width:15px;height:15px;flex-shrink:0;margin-top:2px}
 .price-feats li.no{color:var(--text-3)}
-.price-card.pro .price-feats li.no{color:var(--on-ink);opacity:.5}
-.price-feats li.no svg{opacity:.55}
+.price-feats li.no svg{opacity:.6}
+
 .price-cta{
-  display:flex;align-items:center;justify-content:center;width:100%;margin-top:1.4rem;
-  padding:12px 20px;border-radius:var(--radius-sm);border:1.5px solid transparent;
+  display:inline-flex;align-items:center;justify-content:center;width:100%;
+  padding:12.5px 22px;border-radius:var(--radius-sm);border:1.5px solid transparent;
   font-family:'JetBrains Mono',monospace;font-size:13.5px;font-weight:600;cursor:pointer;
-  transition:transform .18s,box-shadow .18s,background .18s,border-color .18s;
+  transition:transform .18s,box-shadow .18s,background .18s,color .18s,border-color .18s;
+  text-align:center;
 }
 .price-card:not(.pro) .price-cta{background:var(--primary);color:var(--on-primary);box-shadow:var(--shadow-sm)}
-.price-card:not(.pro) .price-cta:hover{background:var(--primary-hover);transform:translateY(-2px);box-shadow:var(--shadow)}
-.price-cta.disabled{background:transparent;border-color:var(--on-ink);color:var(--on-ink);opacity:.5;cursor:not-allowed;pointer-events:none}
+.price-banner{grid-area:banner;display:flex;align-items:center;justify-content:center;width:100%}
+.price-banner img{width:100%;height:auto;display:block;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.18);object-fit:contain}
+
+/* Card Pro — Inverted Contrast */
+/* Mode Terang: Kartu Pro gelap */
+:root:not([data-theme="dark"]) .price-card.pro{
+  background:#1E1C1A;border-color:#2E2A25;color:#F7F5F1;
+}
+:root:not([data-theme="dark"]) .price-card.pro .price-badge{
+  border-color:rgba(255,255,255,.25);color:#F7F5F1;
+}
+:root:not([data-theme="dark"]) .price-card.pro h3{color:#F7F5F1}
+:root:not([data-theme="dark"]) .price-card.pro .price-content>p{color:#A19B8E}
+:root:not([data-theme="dark"]) .price-card.pro .price-feats li{color:#F7F5F1}
+:root:not([data-theme="dark"]) .price-card.pro .price-feats li svg{color:#92C639}
+:root:not([data-theme="dark"]) .price-card.pro .price-cta{
+  background:#FFFFFF;color:#1E1C1A;box-shadow:0 2px 10px rgba(0,0,0,.25);
+}
+:root:not([data-theme="dark"]) .price-card.pro .price-cta:hover{
+  background:#EFEBE4;transform:translateY(-2px);
+}
+
+/* Mode Gelap: Kartu Pro terang */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .price-card.pro{
+    background:#FFFFFF;border-color:#DEDBD3;color:#1E1C1A;box-shadow:0 8px 30px rgba(0,0,0,.45);
+  }
+  :root:not([data-theme="light"]) .price-card.pro .price-badge{
+    border-color:#C7C2B7;color:#1E1C1A;
+  }
+  :root:not([data-theme="light"]) .price-card.pro h3{color:#1E1C1A}
+  :root:not([data-theme="light"]) .price-card.pro .price-content>p{color:#5E5A53}
+  :root:not([data-theme="light"]) .price-card.pro .price-feats li{color:#1E1C1A}
+  :root:not([data-theme="light"]) .price-card.pro .price-feats li svg{color:#4C6F0F}
+  :root:not([data-theme="light"]) .price-card.pro .price-cta{
+    background:#141210;color:#FFFFFF;box-shadow:0 2px 10px rgba(0,0,0,.15);
+  }
+  :root:not([data-theme="light"]) .price-card.pro .price-cta:hover{
+    background:#2A2724;transform:translateY(-2px);
+  }
+}
+:root[data-theme="dark"] .price-card.pro{
+  background:#FFFFFF;border-color:#DEDBD3;color:#1E1C1A;box-shadow:0 8px 30px rgba(0,0,0,.45);
+}
+:root[data-theme="dark"] .price-card.pro .price-badge{
+  border-color:#C7C2B7;color:#1E1C1A;
+}
+:root[data-theme="dark"] .price-card.pro h3{color:#1E1C1A}
+:root[data-theme="dark"] .price-card.pro .price-content>p{color:#5E5A53}
+:root[data-theme="dark"] .price-card.pro .price-feats li{color:#1E1C1A}
+:root[data-theme="dark"] .price-card.pro .price-feats li svg{color:#4C6F0F}
+:root[data-theme="dark"] .price-card.pro .price-cta{
+  background:#141210;color:#FFFFFF;box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+:root[data-theme="dark"] .price-card.pro .price-cta:hover{
+  background:#2A2724;transform:translateY(-2px);
+}
+
+/* Responsif Mobile untuk Kartu Pricing */
+@media(max-width:860px){
+  .pricing-stack{gap:1.25rem}
+  .price-card{
+    padding:1.35rem 1.25rem 1.6rem;border-radius:16px;
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "banner"
+      "content";
+    gap:1.35rem;
+  }
+  .price-banner img{border-radius:10px}
+  .price-cta{width:100%}
+}
 
 /* ─────────── FAQ ─────────── */
 .faq-list{display:flex;flex-direction:column;gap:.65rem;max-width:800px}
@@ -408,7 +477,7 @@ html.motion-ready [data-anim-group]>*{opacity:0}
 <header class="topbar">
   <div class="wrap topbar-in">
     <a class="brand" href="/">
-      <span class="brand-name">SAWAH STUDIO</span>
+      <span class="brand-name">Kirim.in</span>
       <span class="brand-badge">Trial</span>
     </a>
 
@@ -458,7 +527,7 @@ html.motion-ready [data-anim-group]>*{opacity:0}
     <div class="mock" data-anim="mock" aria-hidden="true">
       <div class="mock-top">
         <div>
-          <div class="t1">SAWAH STUDIO</div>
+          <div class="t1">Kirim.in</div>
           <div class="t2">made by yasra</div>
         </div>
         <div class="inv">INVOICE</div>
@@ -573,29 +642,39 @@ html.motion-ready [data-anim-group]>*{opacity:0}
       <p>Kalkulator, preview, dan export tetap sama di kedua paket. Bedanya ada di identitas bisnis yang tampil di invoice.</p>
     </div>
 
-    <div class="pricing-grid" data-anim-group>
+    <div class="pricing-stack" data-anim-group>
       <div class="price-card">
-        <span class="price-badge">Gratis</span>
-        <h3>Untuk mulai cepat</h3>
-        <p>Semua fitur inti tanpa perlu daftar akun.</p>
-        <ul class="price-feats">
-          <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Nama bisnis tetap "Sawah Studio"</li>
-          <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Watermark "made by Sawah Studio" tetap tampil</li>
-          <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Belum bisa unggah logo sendiri</li>
-        </ul>
-        <a href="/invoice-edit" class="price-cta">Coba Sekarang</a>
+        <div class="price-content">
+          <span class="price-badge">Gratis</span>
+          <h3>Untuk mulai cepat</h3>
+          <p>Semua fitur inti tanpa perlu daftar akun.</p>
+          <ul class="price-feats">
+            <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Nama bisnis tetap "Kirim.in"</li>
+            <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Watermark "Kirim.in by Sawah Studio" tetap tampil</li>
+            <li class="no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Belum bisa unggah logo sendiri</li>
+          </ul>
+          <a href="/invoice-edit" class="price-cta">Coba Sekarang</a>
+        </div>
+        <div class="price-banner">
+          <img src="/assets/banner%20free.png" alt="Preview Paket Gratis Kirim.in" loading="lazy">
+        </div>
       </div>
 
       <div class="price-card pro">
-        <span class="price-badge">Berbayar</span>
-        <h3>Untuk identitas bisnis sendiri</h3>
-        <p>Invoice tampil sepenuhnya atas nama bisnismu.</p>
-        <ul class="price-feats">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Bisa mengedit nama bisnis pribadi di invoice</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tanpa watermark "made by Sawah Studio"</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Bisa menambahkan logo/icon sendiri di invoice</li>
-        </ul>
-        <span class="price-cta disabled" aria-disabled="true">Segera Hadir</span>
+        <div class="price-content">
+          <span class="price-badge">Berbayar</span>
+          <h3>Untuk identitas bisnis sendiri</h3>
+          <p>Invoice tampil sepenuhnya atas nama bisnismu.</p>
+          <ul class="price-feats">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Bisa mengedit nama bisnis pribadi di invoice</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tanpa watermark "Kirim.in by Sawah Studio"</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Bisa menambahkan logo/icon sendiri di invoice</li>
+          </ul>
+          <a href="/invoice-edit" class="price-cta">Berlangganan</a>
+        </div>
+        <div class="price-banner">
+          <img src="/assets/banner%20pro.png" alt="Preview Paket Berbayar Kirim.in" loading="lazy">
+        </div>
       </div>
     </div>
   </div>
@@ -669,8 +748,8 @@ html.motion-ready [data-anim-group]>*{opacity:0}
 <footer>
   <div class="wrap foot-in">
     <div>
-      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;letter-spacing:-.2px">SAWAH STUDIO</div>
-      <div class="foot-meta" style="margin-top:.25rem">Invoice App v2.0 · Fresh made by people of sawah</div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px;letter-spacing:-.2px">Kirim.in</div>
+      <div class="foot-meta" style="margin-top:.25rem">by Sawah Studio · Invoice App v2.0</div>
     </div>
     <nav class="foot-links">
       <a href="/invoice-edit">Kalkulator</a>
