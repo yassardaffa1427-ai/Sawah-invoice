@@ -55,8 +55,8 @@ Tetap berwarna karena ini informasi fungsional (status invoice/langganan), bukan
 
 ## 2. Tipografi
 
-- **Inter Tight** — semua heading & body (font yang sudah dipakai aplikasi sekarang).
-- **JetBrains Mono** — dipakai lebih luas dari sebelumnya: bukan cuma angka (nomor invoice, nominal), tapi juga **semua caption, eyebrow, dan label kecil** — huruf kapital, letter-spacing lebar (`0.09em`), ukuran kecil (~10.5px). Ini yang memberi kesan terminal/CLI seperti pada opencode.
+- **Inter Tight** — digunakan untuk heading utama (H1, H2, H3).
+- **JetBrains Mono** — digunakan secara menyeluruh untuk **semua body teks, paragraf, caption, eyebrow, label kecil, angka (nomor invoice, nominal), serta input/form**. Ini yang memberikan estetika terminal/CLI seragam ala opencode.
 
 ### Skala Tipe
 
@@ -65,7 +65,7 @@ Tetap berwarna karena ini informasi fungsional (status invoice/langganan), bukan
 | H1 | Inter Tight 800 | 40px | -0.03em |
 | H2 | Inter Tight 800 | 28px | -0.02em |
 | H3 | Inter Tight 700 | 20px | -0.01em |
-| Body | Inter Tight 400 | 15.5px | normal |
+| Body | JetBrains Mono 400 | 14.5px–15.5px | normal |
 | Caption / label | JetBrains Mono 500 | 10.5px | 0.09em, uppercase |
 | Angka (nominal, kuota) | JetBrains Mono 600 | 18–26px | `font-variant-numeric: tabular-nums` |
 
