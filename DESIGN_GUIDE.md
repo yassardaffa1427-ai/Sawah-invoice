@@ -109,7 +109,7 @@ Tidak ada lagi tombol hijau/gradasi. Beda tier/plan ditandai lewat teks & badge,
 ## 6. Kartu Pricing (Gratis & Berbayar)
 
 Layout kartu pricing menggunakan struktur horizontal 2 kartu besar (stacked):
-- **Desktop**: Grid 2 kolom per kartu — sisi kiri berisi informasi paket (badge tier, judul, deskripsi, daftar fitur, tombol CTA), sisi kanan berisi banner visual mockup (`banner free.png` dan `banner pro.png`).
+- **Desktop**: Grid 2 kolom per kartu — sisi kiri berisi informasi paket (badge tier, judul, deskripsi, daftar fitur, tombol CTA), sisi kanan berisi banner visual mockup (`banner free baru.png` dan `banner pro baru.png`).
 - **Mobile**: Responsif otomatis dengan `grid-template-areas` — banner gambar berada di posisi atas (skala penuh auto sesuai padding kartu), dan teks konten berada di bawahnya.
 - **Kontras Tema**:
   - **Gratis**: Menggunakan panel standar (`--surface`) dengan tombol primary.
