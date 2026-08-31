@@ -210,6 +210,9 @@ th.c,td.c{text-align:center}
 tbody tr{border-bottom:1px solid var(--border)}
 tbody tr:last-child{border-bottom:none}
 tbody tr.item-row:hover{background:var(--primary-faint)}
+@keyframes rowIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+tbody tr.item-row{animation:rowIn .3s ease}
+@media (prefers-reduced-motion: reduce){tbody tr.item-row{animation:none}}
 td{padding:9px 8px;vertical-align:middle}
 .td-no{width:34px;text-align:center;font-size:11.5px;color:var(--text-3);font-family:'JetBrains Mono',monospace}
 .td-del{width:34px;text-align:center}
@@ -439,7 +442,24 @@ td input::placeholder{color:var(--placeholder)}
   .print-table tr{page-break-inside:avoid}
   .print-summary,.print-notes{page-break-inside:avoid}
 }
+
+/* ── Motion: state awal sebelum animasi masuk (dilepas oleh script di bawah) ── */
+html.motion-ready [data-anim],
+html.motion-ready [data-anim-group]>*{opacity:0}
 </style>
+<script>
+/* Motion: sembunyikan elemen ber-[data-anim] sebelum dianimasikan.
+   Dilewati kalau pengguna minta reduced motion, dan ada jaring pengaman
+   2 detik supaya konten tetap muncul kalau modul gagal dimuat. */
+(function(){
+  try{
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var d=document.documentElement;
+    d.classList.add('motion-ready');
+    setTimeout(function(){d.classList.remove('motion-ready');},2000);
+  }catch(e){}
+})();
+</script>
 </head>
 <body>
 
@@ -462,7 +482,7 @@ td input::placeholder{color:var(--placeholder)}
   </div>
 </header>
 
-<div class="app">
+<div class="app" data-anim-group>
 
   <div class="page-head">
     <div class="kick">Kalkulator</div>
@@ -1128,6 +1148,38 @@ document.addEventListener('keydown', function(e){
   document.getElementById('inv-no').value   = `#INV/${rnd}/${yy}`;
   document.getElementById('inv-date').value = now.toISOString().split('T')[0];
 })();
+</script>
+<script type="module">
+/* ══════════ MOTION (vendor/motion.min.js) ══════════ */
+import { animate, inView, stagger } from '/vendor/motion.min.js';
+
+const root = document.documentElement;
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ease = [0.22, 1, 0.36, 1];
+
+const anims = [...document.querySelectorAll('[data-anim]')];
+if (!reduce) anims.forEach(el => { el.style.opacity = '0'; });
+root.classList.remove('motion-ready');
+
+if (!reduce) {
+  const reveal = (el, delay = 0) => animate(
+    el,
+    { opacity: [0, 1], transform: ['translateY(16px)', 'translateY(0px)'] },
+    { duration: 0.45, ease, delay }
+  );
+
+  document.querySelectorAll('[data-anim="reveal"]').forEach(el => {
+    inView(el, () => { reveal(el); }, { amount: 0.25 });
+  });
+
+  document.querySelectorAll('[data-anim-group]').forEach(group => {
+    const items = [...group.children];
+    items.forEach(el => { el.style.opacity = '0'; });
+    inView(group, () => {
+      items.forEach((el, i) => reveal(el, i * 0.06));
+    }, { amount: 0.1 });
+  });
+}
 </script>
 </body>
 </html>

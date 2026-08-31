@@ -249,7 +249,24 @@ footer p{font-size:12px;color:var(--text-3)}
   .print-notes{background:#F7F8F3 !important;border-left:3px solid #4C6F0F !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .print-table tr,.print-summary,.print-notes{page-break-inside:avoid}
 }
+
+/* ── Motion: state awal sebelum animasi masuk (dilepas oleh script di bawah) ── */
+html.motion-ready [data-anim],
+html.motion-ready [data-anim-group]>*{opacity:0}
 </style>
+<script>
+/* Motion: sembunyikan elemen ber-[data-anim] sebelum dianimasikan.
+   Dilewati kalau pengguna minta reduced motion, dan ada jaring pengaman
+   2 detik supaya konten tetap muncul kalau modul gagal dimuat. */
+(function(){
+  try{
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var d=document.documentElement;
+    d.classList.add('motion-ready');
+    setTimeout(function(){d.classList.remove('motion-ready');},2000);
+  }catch(e){}
+})();
+</script>
 </head>
 <body>
 
@@ -270,7 +287,7 @@ footer p{font-size:12px;color:var(--text-3)}
 
 <div class="wrap">
 
-  <div class="page-head">
+  <div class="page-head" data-anim="reveal">
     <div class="kick">Preview</div>
     <h1>Beginilah hasil akhirnya</h1>
     <p>Contoh dokumen invoice dengan data isian, persis seperti yang akan tercetak atau tersimpan sebagai PDF.</p>
@@ -281,7 +298,7 @@ footer p{font-size:12px;color:var(--text-3)}
   </div>
 
   <!-- ══════════ DOKUMEN ══════════ -->
-  <div class="doc-frame">
+  <div class="doc-frame" data-anim="doc">
     <div class="invoice-document">
       <div class="print-header">
         <div class="print-company">
@@ -392,7 +409,7 @@ footer p{font-size:12px;color:var(--text-3)}
   </div>
 
   <!-- ══════════ ACTIONS ══════════ -->
-  <div class="action-bar">
+  <div class="action-bar" data-anim="reveal">
     <a href="/invoice-edit" class="btn btn-primary">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
       Buat Invoice Saya Sendiri
@@ -404,12 +421,12 @@ footer p{font-size:12px;color:var(--text-3)}
   </div>
 
   <!-- ══════════ FITUR ══════════ -->
-  <div class="sec-head">
+  <div class="sec-head" data-anim="reveal">
     <h2>Apa yang membuat dokumen ini rapi</h2>
     <p>Setiap bagian dirancang supaya klien langsung menemukan informasi yang dicarinya.</p>
   </div>
 
-  <div class="feature-grid">
+  <div class="feature-grid" data-anim-group>
     <div class="feature-card">
       <div class="fc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
       <h3>Hierarki yang Jelas</h3>
@@ -502,6 +519,49 @@ function syncThemeBtn(){
 }
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',syncThemeBtn);
 syncThemeBtn();
+</script>
+<script type="module">
+/* ══════════ MOTION (vendor/motion.min.js) ══════════ */
+import { animate, inView, stagger } from '/vendor/motion.min.js';
+
+const root = document.documentElement;
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ease = [0.22, 1, 0.36, 1];
+
+const anims = [...document.querySelectorAll('[data-anim]')];
+if (!reduce) anims.forEach(el => { el.style.opacity = '0'; });
+root.classList.remove('motion-ready');
+
+if (!reduce) {
+  const reveal = (el, delay = 0) => animate(
+    el,
+    { opacity: [0, 1], transform: ['translateY(18px)', 'translateY(0px)'] },
+    { duration: 0.5, ease, delay }
+  );
+
+  document.querySelectorAll('[data-anim="reveal"]').forEach(el => {
+    inView(el, () => { reveal(el); }, { amount: 0.25 });
+  });
+
+  /* Dokumen invoice: masuk dengan sedikit scale, terasa seperti "muncul" */
+  document.querySelectorAll('[data-anim="doc"]').forEach(el => {
+    inView(el, () => {
+      animate(
+        el,
+        { opacity: [0, 1], transform: ['translateY(24px) scale(.97)', 'translateY(0px) scale(1)'] },
+        { duration: 0.65, ease, delay: 0.1 }
+      );
+    }, { amount: 0.2 });
+  });
+
+  document.querySelectorAll('[data-anim-group]').forEach(group => {
+    const items = [...group.children];
+    items.forEach(el => { el.style.opacity = '0'; });
+    inView(group, () => {
+      items.forEach((el, i) => reveal(el, i * 0.06));
+    }, { amount: 0.15 });
+  });
+}
 </script>
 </body>
 </html>
